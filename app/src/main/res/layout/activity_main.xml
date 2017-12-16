@@ -36,7 +36,7 @@
 
             <ImageView
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="80dp"
                 android:src="@drawable/googlelogo"
                 android:layout_marginLeft="10dp"/>
 
@@ -57,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             card_view:cardCornerRadius="3dp"
-            card_view:cardElevation="2dp">
+            card_view:cardElevation="2dp"
+            card_view:cardBackgroundColor="#052731">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,11 +67,11 @@
 
                 <ImageView
                     android:id="@+id/weather_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_width="150dp"
+                    android:layout_height="150dp" />
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -83,27 +84,31 @@
                         android:text="Long Island City, NY"
                         android:textStyle="bold"
                         android:textSize="20sp"
+                        android:textColor="@color/colorWhite"
                         />
 
                     <TextView
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date"/>
+                        android:text="Date"
+                        android:textColor="@color/colorWhite"/>
 
                     <TextView
                         android:id="@+id/min_temp"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:text="temp"
-                        android:textSize="35dp" />
+                        android:textSize="35dp"
+                        android:textColor="@color/colorWhite"/>
 
                     <TextView
                         android:layout_marginTop="-10dp"
                         android:id="@+id/data"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="location"/>
+                        android:text="location"
+                        android:textColor="@color/colorWhite"/>
 
 
                 </LinearLayout>
