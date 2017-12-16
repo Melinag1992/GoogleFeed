@@ -3,6 +3,8 @@ package nyc.c4q.googlefeed;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TextView displayWeather;
     TextView dateDisplay;
     TextView displayTemp;
+    ImageView displayIcon;
 
     private String result= "";
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         displayWeather= findViewById(R.id.data);
         dateDisplay= findViewById(R.id.date);
         displayTemp= findViewById(R.id.min_temp);
+        displayIcon= findViewById(R.id.weather_image);
 
         WeatherApi();
 
@@ -85,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                         "Wind Speed: "+currently.getWindSpeed()+"\n"+
                         "Wind Gust: " +currently.getWindGust();
 
+                String icon = currently.getIcon();
+                getWeatherIcon(icon);
                 displayTemp.setText(temp);
                 dateDisplay.setText(format3);
                 displayWeather.setText(result);
@@ -93,9 +99,44 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call <GetCurrently> call, Throwable t) {
-
+                Log.e(TAG, "onFailure: " + t );
             }
         });
+    }
+
+    public void getWeatherIcon(String icon) {
+        switch(icon) {
+            case "clear-day":
+                displayIcon.setImageResource(R.drawable.clear_day);
+                break;
+            case "clear-night":
+                displayIcon.setImageResource(R.drawable.clear_night);
+                break;
+            case "rain":
+                displayIcon.setImageResource(R.drawable.rain);
+                break;
+            case "snow":
+                displayIcon.setImageResource(R.drawable.snow);
+                break;
+            case "sleet":
+                displayIcon.setImageResource(R.drawable.sleet);
+                break;
+            case "wind":
+                displayIcon.setImageResource(R.drawable.windy);
+                break;
+            case "fog":
+                displayIcon.setImageResource(R.drawable.fog);
+                break;
+            case "cloudy":
+                displayIcon.setImageResource(R.drawable.cloudy);
+                break;
+            case "partly-cloudy-day":
+                displayIcon.setImageResource(R.drawable.partly_cloudy);
+                break;
+            case "partly-cloudy-night":
+                displayIcon.setImageResource(R.drawable.partly_cloudy_night);
+                break;
+        }
     }
 
 }
