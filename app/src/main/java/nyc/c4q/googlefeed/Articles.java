@@ -4,25 +4,23 @@ package nyc.c4q.googlefeed;
  * Created by admin on 12/16/17.
  */
 
-class VergeArticle {
+public class Articles {
 
     private String title;
-    private String Description;
-
-
+    private String description;
+    private String urlToImage;
 
     public String getTitle() {
         return title;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public String getUrltoimage() {
-        return Urltoimage;
+        return urlToImage;
     }
 
-    private String Urltoimage;
 
 }

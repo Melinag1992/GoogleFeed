@@ -5,48 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nyc.c4q.googlefeed.MainActivity">
-    
+
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/google"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            card_view:cardCornerRadius="3dp"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:foreground="?android:selectableItemBackground">
+            android:foreground="?android:selectableItemBackground"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            card_view:cardCornerRadius="3dp">
 
             <EditText
                 android:id="@+id/search_google"
-                android:layout_gravity="center"
                 android:layout_width="310dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:inputType="text"
-                android:textColorHint="#448AFF"
-                />
+                android:textColorHint="#448AFF" />
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:src="@drawable/googlelogo"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/googlelogo" />
 
 
         </android.support.v7.widget.CardView>
 
         <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/recycler_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+        <!--android:id="@+id/recycler_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
         <!--</android.support.v7.widget.RecyclerView>-->
 
@@ -54,65 +52,115 @@
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/weather_card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_margin="5dp"
             card_view:cardCornerRadius="3dp"
             card_view:cardElevation="2dp">
 
+
+
+            <ImageView
+                android:id="@+id/weather_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="vertical"/>
 
-                <ImageView
-                    android:id="@+id/weather_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp" />
-
-                <LinearLayout
-                    android:layout_marginTop="5dp"
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/weather_location"
                     android:layout_width="match_parent"
-                    android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="Long Island City, NY"
+                    android:paddingBottom="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/weather_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Long Island City, NY"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        />
+                <TextView
+                    android:id="@+id/date"
+                    android:gravity="right"
+                    android:paddingLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="Date" />
 
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Date"/>
+                <TextView
+                    android:id="@+id/min_temp"
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingTop="10dp"
 
-                    <TextView
-                        android:id="@+id/min_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:text="temp"
-                        android:textSize="35dp" />
+                    android:text="temp"
+                    android:textSize="35dp" />
 
-                    <TextView
-                        android:layout_marginTop="-10dp"
-                        android:id="@+id/data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="location"/>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/data"
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:text="location" />
 
         </android.support.v7.widget.CardView>
 
-    </LinearLayout>
 
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/verge_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="2dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titletext"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/imageView"
+                android:layout_alignStart="@+id/imageView"
+                android:text="Title"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/description_textView"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/titletext"
+                android:layout_centerVertical="true"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="description"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@mipmap/ic_launcher" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+            </LinearLayout>
 
 </ScrollView>

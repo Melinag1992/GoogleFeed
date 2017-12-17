@@ -6,12 +6,15 @@ import java.util.List;
  * Created by admin on 12/16/17.
  */
 
-public class VergeArticles {
+public class VergeReponse {
 
-    private List<Articles> article;
+
+    private String status;
+    private int totalResults;
+    private List<Articles> articles;
 
     public List<Articles> getArticle() {
-        return article;
+        return articles;
     }
 
 }
