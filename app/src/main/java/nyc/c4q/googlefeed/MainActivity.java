@@ -2,17 +2,22 @@ package nyc.c4q.googlefeed;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 
 import android.widget.Switch;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -23,8 +28,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "mainActivity";
 
     private TextView displayWeather;
     private TextView dateDisplay;
@@ -37,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private String articleDescription;
     private String articleTitle;
     private ImageView displayIcon;
+    private  static final String TAG= MainActivity.class.getSimpleName();
+    private final static String API_KEY= "f3887b19f7bec24ad815dde137f8f6a1";
+    private List<Movie> upcomingMovies= new ArrayList<>();
+    private RecyclerView rv;
 
     private static final String WEATHER_API_KEY = "d5730a368a881b4061f35adf65c2da29";
 
@@ -49,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
         setWeatherApiViews();
         weatherApi();
         buzzfeedApi();
+
+        if (API_KEY.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please check your API KEY", Toast.LENGTH_LONG).show();
+        }
+
+        rv= findViewById(R.id.upcoming_rv);
+        rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        getRetrofit();
+
     }
 
 
@@ -194,4 +210,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void getRetrofit() {
+        final String BASE_URL = "http://api.themoviedb.org/3/";
+        Retrofit retrofit= new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        MovieService movieService = retrofit.create(MovieService.class);
+
+        final Call<MovieResponse> upcomingM= movieService.getUpcomingMovies(API_KEY);
+        upcomingM.enqueue(new Callback <MovieResponse>() {
+            @Override
+            public void onResponse(Call <MovieResponse> call, Response<MovieResponse> response) {
+                upcomingMovies=response.body().getResults();
+                rv.setAdapter(new upComigMoviesAdapter(upcomingMovies));
+            }
+
+            @Override
+            public void onFailure(Call <MovieResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: "+ t.toString());
+            }
+        });
+    }
+
+
 }
+
+
