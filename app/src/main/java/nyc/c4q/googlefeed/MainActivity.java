@@ -156,10 +156,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call <VergeReponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t );
             }
-
         });
-
-
     }
   
     public void getWeatherIcon(String icon) {

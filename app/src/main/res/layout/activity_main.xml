@@ -36,14 +36,9 @@
                 android:layout_height="match_parent" />
 
         </android.support.v7.widget.CardView>
-        <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/recycler_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
 
-        <!--</android.support.v7.widget.RecyclerView>-->
-
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/weather_card"
             android:layout_width="match_parent"
             android:layout_height="150dp"
@@ -51,7 +46,6 @@
             card_view:cardCornerRadius="3dp"
             card_view:cardElevation="2dp"
             card_view:cardBackgroundColor="#052731">
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -64,7 +58,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignTop="@+id/min_temp"
                     android:layout_marginStart="11dp"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    />
 
                 <TextView
                     android:id="@+id/data"
@@ -154,7 +148,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="30dp"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                     />
 
             </RelativeLayout>
 
@@ -192,7 +186,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="30dp"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                  />
 
             </RelativeLayout>
 
