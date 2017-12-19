@@ -8,12 +8,10 @@
     tools:context="nyc.c4q.googlefeed.MainActivity"
     android:padding="10dp">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <ImageView
             android:layout_width="130dp"
@@ -22,7 +20,8 @@
             android:layout_marginTop="60dp"
             android:src="@drawable/googlelogo" />
 
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/search_bar_card"
             android:layout_width="360dp"
             android:layout_height="50dp"
@@ -31,7 +30,6 @@
             android:layout_marginTop="30dp"
             card_view:cardCornerRadius="10dp"
             card_view:cardElevation="3dp">
-
 
             <SearchView
                 android:layout_width="match_parent"
@@ -50,7 +48,6 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="5dp"
-
             card_view:cardCornerRadius="3dp"
             card_view:cardElevation="2dp"
             card_view:cardBackgroundColor="#052731">
@@ -62,14 +59,12 @@
 
                 <ImageView
                     android:id="@+id/weather_image"
-
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignTop="@+id/min_temp"
                     android:layout_marginStart="11dp"
                     android:src="@drawable/ic_launcher_foreground" />
-
 
                 <TextView
                     android:id="@+id/data"
@@ -81,6 +76,7 @@
                     android:gravity="top"
                     android:paddingTop="40dp"
                     android:text="location"
+                    android:textColor="@color/colorWhite"
                     android:textSize="12sp" />
 
                 <TextView
@@ -91,6 +87,7 @@
                     android:layout_alignStart="@+id/data"
                     android:layout_marginTop="18dp"
                     android:text="47"
+                    android:textColor="@color/colorWhite"
                     android:textSize="35sp" />
 
                 <TextView
@@ -103,8 +100,8 @@
                     android:gravity="right"
                     android:text="Long Island City, NY"
                     android:textSize="12sp"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold" />
-
 
                 <TextView
                     android:id="@+id/date"
@@ -116,12 +113,11 @@
                     android:gravity="right"
                     android:padding="0dp"
                     android:paddingLeft="20dp"
+                    android:textColor="@color/colorWhite"
                     android:text="Date" />
 
 
             </RelativeLayout>
-
-
 
         </android.support.v7.widget.CardView>
 
@@ -151,7 +147,6 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
@@ -160,7 +155,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="30dp"
                     app:srcCompat="@mipmap/ic_launcher" />
+
             </RelativeLayout>
+
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -196,9 +193,10 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="30dp"
                     app:srcCompat="@mipmap/ic_launcher" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
 
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
