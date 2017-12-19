@@ -4,43 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nyc.c4q.googlefeed.MainActivity">
+    android:background="#FFFF"
+    tools:context="nyc.c4q.googlefeed.MainActivity"
+    android:padding="10dp">
+
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/googlelogo" />
+
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:foreground="?android:selectableItemBackground"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            card_view:cardCornerRadius="3dp">
+            android:id="@+id/search_bar_card"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="30dp"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="3dp">
 
-            <EditText
-                android:id="@+id/search_google"
-                android:layout_width="310dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:inputType="text"
-                android:textColorHint="#448AFF" />
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/googlelogo" />
-
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </android.support.v7.widget.CardView>
-
         <!--<android.support.v7.widget.RecyclerView-->
         <!--android:id="@+id/recycler_view"-->
         <!--android:layout_width="match_parent"-->
@@ -48,119 +44,153 @@
 
         <!--</android.support.v7.widget.RecyclerView>-->
 
-        <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/weather_card"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="5dp"
-            card_view:cardCornerRadius="3dp"
-            card_view:cardElevation="2dp">
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="6dp">
 
-
-
-            <ImageView
-                android:id="@+id/weather_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:orientation="vertical"/>
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/weather_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true" />
+
 
                 <TextView
-                    android:gravity="right"
-                    android:id="@+id/weather_location"
-                    android:layout_width="match_parent"
+                    android:id="@+id/data"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/weather_image"
+                    android:layout_marginStart="27dp"
+                    android:layout_toEndOf="@+id/weather_image"
+                    android:gravity="top"
+                    android:paddingTop="40dp"
+                    android:text="location" />
+
+                <TextView
+                    android:id="@+id/weather_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/data"
+                    android:layout_marginEnd="35dp"
+                    android:gravity="right"
                     android:text="Long Island City, NY"
-                    android:paddingBottom="10dp"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/date"
-                    android:gravity="right"
-                    android:paddingLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/min_temp"
+                    android:layout_below="@+id/weather_image"
+                    android:layout_marginEnd="23dp"
+                    android:gravity="right"
+                    android:padding="0dp"
+                    android:paddingLeft="20dp"
                     android:text="Date" />
 
                 <TextView
                     android:id="@+id/min_temp"
-                    android:gravity="right"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:paddingTop="10dp"
-
-                    android:text="temp"
-                    android:textSize="35dp" />
-
-                <TextView
-                    android:id="@+id/data"
-                    android:gravity="right"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-10dp"
-                    android:text="location" />
+                    android:layout_alignBottom="@+id/data"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="64dp"
+                    android:gravity="right"
+                    android:text="47"
+                    android:textSize="30sp" />
+
+
+            </RelativeLayout>
+
 
         </android.support.v7.widget.CardView>
 
 
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/verge_cardview"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="2dp" >
-
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/verge_cardview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/cardshape"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="6dp">
 
-            <TextView
-                android:id="@+id/titletext"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/imageView"
-                android:layout_alignStart="@+id/imageView"
-                android:text="Title"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp">
 
-            <TextView
-                android:id="@+id/description_textView"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/titletext"
-                android:layout_centerVertical="true"
-                android:paddingTop="20dp"
-                android:paddingLeft="20dp"
-                android:text="description"
-                android:textSize="12dp" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="15dp"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@mipmap/ic_launcher" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/titletext"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/imageView"
+                    android:layout_marginStart="14dp"
+                    android:text="Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/verge_cardview_two"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/cardshape"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/titletext_two"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="14dp"
+                    android:text="Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageView_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
 
 </ScrollView>
