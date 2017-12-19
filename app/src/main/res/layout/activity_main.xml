@@ -4,120 +4,202 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nyc.c4q.googlefeed.MainActivity">
-    
-    <LinearLayout
+    android:background="#FFFF"
+    tools:context="nyc.c4q.googlefeed.MainActivity"
+    android:padding="10dp">
 
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/google"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            card_view:cardCornerRadius="3dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:foreground="?android:selectableItemBackground">
 
-            <EditText
-                android:id="@+id/search_google"
-                android:layout_gravity="center"
-                android:layout_width="310dp"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColorHint="#448AFF"
-                />
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/googlelogo" />
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/googlelogo"
-                android:layout_marginLeft="10dp"/>
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/search_bar_card"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="30dp"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="3dp">
 
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </android.support.v7.widget.CardView>
-
         <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/recycler_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+        <!--android:id="@+id/recycler_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
         <!--</android.support.v7.widget.RecyclerView>-->
 
-        <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/weather_card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_margin="5dp"
+
             card_view:cardCornerRadius="3dp"
             card_view:cardElevation="2dp"
             card_view:cardBackgroundColor="#052731">
 
-            <LinearLayout
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/weather_image"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp" />
 
-                <LinearLayout
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/min_temp"
+                    android:layout_marginStart="11dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+
+                <TextView
+                    android:id="@+id/data"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_alignBottom="@+id/weather_image"
+                    android:layout_marginStart="14dp"
+                    android:layout_toEndOf="@+id/weather_image"
+                    android:gravity="top"
+                    android:paddingTop="40dp"
+                    android:text="location"
+                    android:textSize="12sp" />
 
-                    <TextView
-                        android:id="@+id/weather_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Long Island City, NY"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorWhite"
-                        />
+                <TextView
+                    android:id="@+id/min_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@+id/data"
+                    android:layout_marginTop="18dp"
+                    android:text="47"
+                    android:textSize="35sp" />
 
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Date"
-                        android:textColor="@color/colorWhite"/>
-
-                    <TextView
-                        android:id="@+id/min_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:text="temp"
-                        android:textSize="35dp"
-                        android:textColor="@color/colorWhite"/>
-
-                    <TextView
-                        android:layout_marginTop="-10dp"
-                        android:id="@+id/data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="location"
-                        android:textColor="@color/colorWhite"/>
+                <TextView
+                    android:id="@+id/weather_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/min_temp"
+                    android:layout_marginEnd="36dp"
+                    android:gravity="right"
+                    android:text="Long Island City, NY"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
 
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/weather_location"
+                    android:layout_below="@+id/weather_location"
+                    android:layout_marginStart="25dp"
+                    android:gravity="right"
+                    android:padding="0dp"
+                    android:paddingLeft="20dp"
+                    android:text="Date" />
 
-            </LinearLayout>
+
+            </RelativeLayout>
+
+
 
         </android.support.v7.widget.CardView>
 
-    </LinearLayout>
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/verge_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/cardshape"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/titletext"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/imageView"
+                    android:layout_marginStart="14dp"
+                    android:text="Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/verge_cardview_two"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/cardshape"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/titletext_two"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="14dp"
+                    android:text="Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/imageView_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
 
 </ScrollView>
