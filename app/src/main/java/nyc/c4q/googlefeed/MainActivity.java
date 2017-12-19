@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         titleTextview = findViewById(R.id.titletext);
         displayIcon= findViewById(R.id.weather_image);
     }
-       public void weatherApi() {
+    public void weatherApi() {
 
         final String url = "https://api.darksky.net/forecast/d5730a368a881b4061f35adf65c2da29/";
 
@@ -93,10 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
                 String temp = String.valueOf((int) currently.getTemperature()) + "\u2109\n";
 
-//                double temp= Double.parseDouble(String.valueOf((currently.getTemperature())));
-//                double tempF= ((temp - 32)*5)/9;
-//                Log.e(TAG, "onResponse: " + tempF );
-
                 result = "Summary: " + currently.getSummary() + "\n" +
                         "Wind Speed: " + currently.getWindSpeed() + "\n" +
                         "Wind Gust: " + currently.getWindGust();
@@ -110,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-
             public void onFailure(Call<GetCurrently> call, Throwable t) {
 
             }
@@ -158,11 +153,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            
-            public void onFailure(Call <GetCurrently> call, Throwable t) {
+            public void onFailure(Call <VergeReponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t );
-
             }
+
         });
 
 
