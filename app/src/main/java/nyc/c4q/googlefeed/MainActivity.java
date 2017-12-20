@@ -1,10 +1,16 @@
 package nyc.c4q.googlefeed;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import android.widget.Switch;
@@ -33,14 +39,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView dateDisplay;
     private TextView displayTemp;
     private TextView titleTextview;
-    private ImageView newsImage;
     private TextView description;
+    private ImageView newsImage;
+    private ImageView displayIcon;
+    private EditText search;
     private String result = "";
     private String articleImage;
     private String articleDescription;
     private String articleTitle;
-    private ImageView displayIcon;
-    private  static final String TAG= MainActivity.class.getSimpleName();
+    private static final String TAG= MainActivity.class.getSimpleName();
     private final static String API_KEY= "f3887b19f7bec24ad815dde137f8f6a1";
     private List<Movie> upcomingMovies= new ArrayList<>();
     private RecyclerView rv;
@@ -53,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setBuzzFeedViews();
-        setWeatherApiViews();
+        views();
         weatherApi();
         buzzfeedApi();
+        search();
 
         if (API_KEY.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please check your API KEY", Toast.LENGTH_LONG).show();
@@ -67,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    public void setWeatherApiViews(){
-
+    public void views(){
         displayWeather = findViewById(R.id.data);
         dateDisplay = findViewById(R.id.date);
         displayTemp = findViewById(R.id.min_temp);
         titleTextview = findViewById(R.id.titletext);
         displayIcon= findViewById(R.id.weather_image);
+        search = findViewById(R.id.search_bar);
     }
     public void weatherApi() {
 
@@ -123,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetCurrently> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: "+ t.toString());
             }
         });
     }
@@ -144,9 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-
         BuzzfeedfeedApi buzzfeedtopStories = buzzFeedRetroFit.create(BuzzfeedfeedApi.class);
-
 
         Call<VergeReponse> vergeArticleResponse = buzzfeedtopStories.getVergeArticlesResponse("the-next-web,the-verge", "86df0f155fd140709ce109d2f7555cb5");
         vergeArticleResponse.enqueue(new Callback<VergeReponse>() {
@@ -230,6 +235,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call <MovieResponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+ t.toString());
+            }
+        });
+    }
+
+    public void search(){
+        search.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == event.ACTION_DOWN ) {
+                    if((keyCode == event.KEYCODE_ENTER || keyCode == event.KEYCODE_TAB)&& !TextUtils.isEmpty(search.getText().toString())){
+                        String searchText= search.getText().toString();
+                        Intent intent= new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("https://www.google.com/search?q=" + searchText));
+                        startActivity(intent);
+                        search.setText("");
+                    }
+                }
+                return false;
             }
         });
     }

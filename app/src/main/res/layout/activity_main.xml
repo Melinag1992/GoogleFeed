@@ -31,9 +31,12 @@
             card_view:cardCornerRadius="10dp"
             card_view:cardElevation="3dp">
 
-            <SearchView
+            <EditText
+                android:id="@+id/search_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:imeOptions="actionDone"
+                android:maxLines="1"/>
 
         </android.support.v7.widget.CardView>
 
