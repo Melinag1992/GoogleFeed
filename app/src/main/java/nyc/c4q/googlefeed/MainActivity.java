@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private String articleTitle;
     private static final String TAG= MainActivity.class.getSimpleName();
     private final static String API_KEY= "f3887b19f7bec24ad815dde137f8f6a1";
-    private List<Movie> upcomingMovies= new ArrayList<>();
+    private List<Movie> currentMovies= new ArrayList<>();
     private RecyclerView rv;
 
     private static final String WEATHER_API_KEY = "d5730a368a881b4061f35adf65c2da29";
@@ -254,12 +254,12 @@ public class MainActivity extends AppCompatActivity {
 
         MovieService movieService = retrofit.create(MovieService.class);
 
-        final Call<MovieResponse> upcomingM= movieService.getUpcomingMovies(API_KEY);
-        upcomingM.enqueue(new Callback <MovieResponse>() {
+        final Call<MovieResponse> currentM= movieService.getNowPlayingMovies(API_KEY);
+        currentM.enqueue(new Callback <MovieResponse>() {
             @Override
             public void onResponse(Call <MovieResponse> call, Response<MovieResponse> response) {
-                upcomingMovies=response.body().getResults();
-                rv.setAdapter(new upComigMoviesAdapter(upcomingMovies));
+                currentMovies=response.body().getResults();
+                rv.setAdapter(new upComigMoviesAdapter(currentMovies));
             }
 
             @Override
