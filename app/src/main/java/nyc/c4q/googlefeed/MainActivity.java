@@ -189,14 +189,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<VergeReponse> call, Response<VergeReponse> response) {
 
                articleTitle =  response.body().getArticle().get(0).getTitle();
-             //  articleDescription = response.body().getArticle().get(0).getDescription();
                articleImage = response.body().getArticle().get(0).getUrltoimage();
 
                     titleTextview.setText(articleTitle);
-                   // description.setText(articleDescription);
                     Picasso.with(getApplicationContext())
                         .load(articleImage)
-                            .resize(400,400)
+                            .resize(200,200)
                             .centerCrop()
                             .placeholder(R.drawable.ic_launcher_background)
                             .error(R.drawable.ic_launcher_background)
