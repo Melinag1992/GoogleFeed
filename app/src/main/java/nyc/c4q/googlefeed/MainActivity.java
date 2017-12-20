@@ -2,8 +2,11 @@ package nyc.c4q.googlefeed;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import android.widget.ScrollView;
 import android.widget.Switch;
 
 import android.widget.TextView;
@@ -43,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageView newsImage;
     private ImageView displayIcon;
     private EditText search;
+    private ScrollView sv;
+    private CardView movieCard;
+    private CardView vergeCard;
+    private FloatingActionButton movie;
+    private FloatingActionButton verge;
     private String result = "";
     private String articleImage;
     private String articleDescription;
@@ -59,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setBuzzFeedViews();
         views();
+        setScroll();
         weatherApi();
         buzzfeedApi();
         search();
@@ -76,13 +85,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void views(){
+        sv= findViewById(R.id.sv);
         displayWeather = findViewById(R.id.data);
         dateDisplay = findViewById(R.id.date);
         displayTemp = findViewById(R.id.min_temp);
         titleTextview = findViewById(R.id.titletext);
         displayIcon= findViewById(R.id.weather_image);
         search = findViewById(R.id.search_bar);
+        movie= findViewById(R.id.movieButton);
+        verge= findViewById(R.id.vergeButton);
+        titleTextview = findViewById(R.id.titletext);
+        // description = findViewById(R.id.description_textView);
+        newsImage = findViewById(R.id.imageView);
+        movieCard= findViewById(R.id.movie_card);
+        vergeCard= findViewById(R.id.verge_cardview);
+//        movie.scrollTo(0, (int)displayIcon.getY());
     }
+
+    private void setScroll() {
+        movie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sv.smoothScrollTo(0, (int)movieCard.getY());
+                Log.d(TAG, "onClick: "+ movieCard.getX() +" " + (int)movieCard.getY());
+            }
+        });
+        verge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sv.smoothScrollTo(0, ((int)vergeCard.getY()-150));
+                Log.d(TAG, "onClick: "+ vergeCard.getX() +" " + (int)vergeCard.getY());
+            }
+        });
+    }
+
     public void weatherApi() {
 
         final String url = "https://api.darksky.net/forecast/d5730a368a881b4061f35adf65c2da29/";
@@ -104,12 +140,12 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.e(TAG, "onResponse: " + date);
 
-                DateFormat ddf2 = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.ENGLISH);
+                DateFormat dateformat = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.ENGLISH);
 
-                Log.e(TAG, "onResponse: " + ddf2);
+                Log.e(TAG, "onResponse: " + dateformat);
 
-                ddf2.setTimeZone(TimeZone.getTimeZone("EST"));
-                String format3 = ddf2.format(date);
+                dateformat.setTimeZone(TimeZone.getTimeZone("EST"));
+                String format3 = dateformat.format(date);
                 Log.e(TAG, "onResponse: " + format3);
 
                 Currently currently = response.body().getCurrently();
@@ -135,12 +171,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setBuzzFeedViews(){
-        titleTextview = findViewById(R.id.titletext);
-       // description = findViewById(R.id.description_textView);
-        newsImage = findViewById(R.id.imageView);
-
-    }
 
     public void buzzfeedApi() {
 
