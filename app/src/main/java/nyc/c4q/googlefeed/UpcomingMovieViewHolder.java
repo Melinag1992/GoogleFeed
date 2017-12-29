@@ -32,13 +32,13 @@ class UpcomingMovieViewHolder extends RecyclerView.ViewHolder {
         Glide.with(itemView.getContext()).load(sb.toString()).into(image);
         title.setText(movie.getTitle());
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(itemView.getContext(), MovieActivity.class);
-                intent.putExtra("movieObject", movie);
-
-            }
-        });
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent= new Intent(itemView.getContext(), MovieActivity.class);
+//                intent.putExtra("movieObject", movie);
+//
+//            }
+//        });
     }
 }

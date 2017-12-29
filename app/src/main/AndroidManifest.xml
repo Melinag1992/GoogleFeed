@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MovieActivity"></activity>
+        <activity android:name=".MovieActivity" />
+        <activity android:name=".ToDo.ToDoActivity"></activity>
     </application>
 
 </manifest>

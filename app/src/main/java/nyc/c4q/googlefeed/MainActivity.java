@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -31,6 +32,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import nyc.c4q.googlefeed.ToDo.ToDoActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private ScrollView sv;
     private CardView movieCard;
     private CardView vergeCard;
+    private FloatingActionButton toDo;
     private FloatingActionButton movie;
     private FloatingActionButton verge;
     private String result = "";
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         views();
+        hideSoftKeyboard();
         setScroll();
         weatherApi();
         buzzfeedApi();
@@ -77,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
         if (API_KEY.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please check your API KEY", Toast.LENGTH_LONG).show();
         }
+
+        toDo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this, ToDoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         rv = findViewById(R.id.upcoming_rv);
         rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -94,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         search = findViewById(R.id.search_bar);
         movie = findViewById(R.id.movieButton);
         verge = findViewById(R.id.vergeButton);
+        toDo = findViewById(R.id.noteButton);
         titleTextview = findViewById(R.id.titletext);
         // description = findViewById(R.id.description_textView);
         newsImage = findViewById(R.id.imageView);
@@ -279,7 +292,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    public void hideSoftKeyboard() {
+        this.getWindow().setSoftInputMode(WindowManager.
+                LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+    }
 }
 
 
